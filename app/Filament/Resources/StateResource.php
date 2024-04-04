@@ -29,8 +29,10 @@ class StateResource extends Resource
         return $form
             ->schema([
                 Forms\Components\BelongsToSelect::make('country_id')
-    ->relationship('country', 'name') // Assuming 'name' is the display column in your 'countries' table
-    ->required(),
+                ->relationship('country', 'name')
+                ->searchable()
+                ->preload() 
+                ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required(),
             ]);

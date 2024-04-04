@@ -26,9 +26,11 @@ class CityResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\BelongsToSelect::make('state_id')
-                    ->relationship('state', 'name') 
-                    ->required(),
+                Forms\Components\BelongsToSelect::make('state _id')
+                ->relationship('state', 'name')
+                ->searchable()
+                ->preload() 
+                ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required(),
             ]);
