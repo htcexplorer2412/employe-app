@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Country;
+use Illuminate\Database\Eloquent\Relations\BelongsTo; 
+
+
 
 class State extends Model
 {
@@ -13,8 +17,9 @@ class State extends Model
         'country_id',
         'name'];
 
-    public function country(): BelongsTo
-    {
-        return $this->belongsTo(Country::class);
-    }
+        public function country():BelongsTo 
+        {
+            return $this->belongsTo(Country::class);
+        }
+        
 }

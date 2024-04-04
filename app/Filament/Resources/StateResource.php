@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\BelongsToSelect;
+
 
 class StateResource extends Resource
 {
@@ -26,9 +28,9 @@ class StateResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('country_id')
-                    ->relationship(name: 'country', titleAttribute: 'name')
-                    ->required(),
+                Forms\Components\BelongsToSelect::make('country_id')
+    ->relationship('country', 'name') // Assuming 'name' is the display column in your 'countries' table
+    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required(),
             ]);
